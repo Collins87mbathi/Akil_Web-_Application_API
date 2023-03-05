@@ -12,7 +12,7 @@ const categoryRouter = require('./routers/Category');
 
 
 //database connection 
-CONNECTDB(process.env.MONGO_DB);
+CONNECTDB("mongodb+srv://mbathi:shanicecole@cluster0.hex8l.mongodb.net/storedata?retryWrites=true&w=majority");
 
 //middlewares
 app.use(express.json());
