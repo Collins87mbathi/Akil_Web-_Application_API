@@ -90,11 +90,11 @@ const getProducts = async (req,res) => {
 
 const updateProducts = async (req,res) => {
     try {
-        const {title, price,image, category} = req.body;
-        if(!image) return res.status(400).json({msg: "No image upload"})
+        const {title, price,category} = req.body;
+        // if(!image) return res.status(400).json({msg: "No image upload"})
 
       await Product.findOneAndUpdate({_id:req.params.id},{
-       title:title.toLowerCase(),price,description,category
+       title:title.toLowerCase(),price,category
       });
 
     res.status(200).json({msg:"product updated"});
