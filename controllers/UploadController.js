@@ -12,6 +12,9 @@ cloudinary.config({
 const uploadcontroller  = (req,res) => {
     
      try {
+        if (!req.files || !req.files.file) {
+            return res.status(400).json({msg: "No file uploaded."});
+          }
          const file = req.files.file;
 
          cloudinary.v2.uploader.upload(file.tempFilePath, {
