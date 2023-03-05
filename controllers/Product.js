@@ -49,12 +49,12 @@ const Product = require('../models/Products');
 const createProducts = async (req,res) => {
 
 try {
-   const {title,price,description,category,image} = req.body;
+   const {title,price,category,image} = req.body;
 
    if(!image) return res.status(400).json({msg: "no image uploaded"});
 
    const newProducts = new Product({
-       title: title.toLowerCase(),price,description,category,image
+       title: title.toLowerCase(),price,category,image
    });
  await newProducts.save();
  res.status(200).json({msg:"product created"});
@@ -90,7 +90,7 @@ const getProducts = async (req,res) => {
 
 const updateProducts = async (req,res) => {
     try {
-        const {title, price, description, image, category} = req.body;
+        const {title, price,image, category} = req.body;
         if(!image) return res.status(400).json({msg: "No image upload"})
 
       await Product.findOneAndUpdate({_id:req.params.id},{
